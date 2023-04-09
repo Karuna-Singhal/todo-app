@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-const URL = "http://localhost:3000";
+import Effects from "./features/Effects";
+const URL = "http://localhost:8000";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -20,9 +21,9 @@ function App() {
   };
 
   const completeTodo = async (id) => {
-    const data = await fetch(URL + "/todo/update/" + id).then((res) =>
-      res.json()
-    );
+    const data = await fetch(URL + "/todo/update/" + id)
+      .then((res) => res.json())
+      .catch((err) => err.message);
 
     setTodos((todos) =>
       todos.map((todo) => {
@@ -37,7 +38,9 @@ function App() {
   const deleteTodo = async (id) => {
     const data = await fetch(URL + "/todo/delete/" + id, {
       method: "DELETE",
-    }).then((res) => res.json());
+    })
+      .then((res) => res.json())
+      .catch((err) => err.message);
 
     setTodos((todos) => todos.filter((todo) => todo._id !== data._id));
   };
@@ -51,7 +54,9 @@ function App() {
       body: JSON.stringify({
         text: newTodo,
       }),
-    }).then((res) => res.json());
+    })
+      .then((res) => res.json())
+      .catch((err) => err.message);
 
     setTodos([...todos, data]);
 
@@ -61,6 +66,7 @@ function App() {
 
   return (
     <div className="App">
+      <Effects />
       <h1>Welcome, Karuna</h1>
       <h4>Your Tasks</h4>
       <div className="todos">

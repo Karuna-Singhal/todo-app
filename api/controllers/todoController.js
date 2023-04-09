@@ -8,7 +8,7 @@ exports.getTodos = async (req, res) => {
     console.error("Error while fetching todo", err);
     res.status(400 || err.status).json({
       success: false,
-      message: err.type === "custom_err" ? err.message : "Failed to get todos",
+      message: "Failed to get todos",
     });
   }
 };
@@ -24,8 +24,7 @@ exports.createNewTodo = async (req, res) => {
     console.error("Error while creating todo", err);
     res.status(400 || err.status).json({
       success: false,
-      message:
-        err.type === "custom_err" ? err.message : "Failed to create todos",
+      message: "Failed to create todos",
     });
   }
 };
@@ -38,7 +37,7 @@ exports.deleteTodo = async (req, res) => {
     console.error("Error while deleting todo", err);
     res.status(400 || err.status).json({
       success: false,
-      message: err.type === "custom_err" ? err.message : "Failed to get todos",
+      message: "Failed to get todos",
     });
   }
 };
@@ -53,7 +52,7 @@ exports.updateTodo = async (req, res) => {
     console.error("Error while updating todo", err);
     res.status(400 || err.status).json({
       success: false,
-      message: err.type === "custom_err" ? err.message : "Failed to get todos",
+      message: "Failed to get todos",
     });
   }
 };

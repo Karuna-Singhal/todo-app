@@ -20,4 +20,6 @@ app.use("/todo", require("./routes/todoRoutes"));
 
 // start server
 
-app.listen(process.env.PORT || 3002, () => console.log("server started"));
+app.listen(process.env.PORT || 5000, () =>
+  console.log("server started at port: " + `${process.env.port}`)
+);
